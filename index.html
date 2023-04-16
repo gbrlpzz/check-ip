@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IP Address Display</title>
+	<style type="text/css">
+		body {
+			background-color: #222222;
+			height: 100vh;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		#ipAddress {
+			font-family: "Inconsolata", monospace;
+			font-size: 6rem;
+			color: white;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="ipAddress"></div>
+	<script type="text/javascript">
+		const ipAddressElement = document.getElementById("ipAddress");
+		
+		fetch('https://api.ipify.org?format=json')
+		.then(response => response.json())
+		.then(data => {
+			ipAddressElement.innerHTML = data.ip;
+		})
+		.catch(error => {
+			console.error(error);
+			ipAddressElement.innerHTML = "Error Occurred!"
+		})
+	</script>
+</body>
+</html>
